@@ -1,0 +1,29 @@
+动态代理模式
+
+自己申明一个动态代理类，实现InvocationHandler接口。
+
+	申明所需要代理的对象，该对象为实现了接口。Object obj;
+
+	实现一个方法blind(Object obj)，实例化所需要代理的对象以及返回一个代理对象。
+
+		this.obj = obj;
+
+		Proxy.newProxyInstance(clazz,interface,h);
+
+			clazz : 为被代理对象
+
+			interface : 被打理对象所实现的接口
+
+			h : 当前对象，this
+
+	实现invoke(Object proxy, Method method, Object[] args)方法。
+
+		代理类对象调用被代理类重写的方法时，就会自动转换为调用此方法。
+
+使用：
+
+	创建一个实现接口的被代理类对象。
+
+	创建一个动态代理对象，调用blind方法，获取到代理对象。
+
+	代理对象调用被代理对象实现的方法，转换为调用代理对象的invoke方法，进而实现被代理对象的方法。
